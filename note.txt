@@ -1,0 +1,78 @@
+
+
+NPM :nodejs가 제공하는 모듈
+DSA :javascript가 제공하는 모듈
+
+타인의 모듈을 사용하는 방법
+-NPM
+어떤 모듈을 편리하게 설치하고, 필요없으면 삭제하고, 업그레이드, 의존성(다른사람의 모듈이
+여러분과 의존되어있다.)
+uglify-js: 코드를 공백없이 한줄로 만들어준다. 데이터 절약.
+-m : 공백 뿐만아니라, 변수도 한글자로 줄여준다.
+-o : 결과를 js로 저장할 수 있다. pretty.js -o uglified.js -m
+pretty.min : 작게 압축시킨 파일이란 것을 알 수 있음
+
+
+다른사람이 만든 소프트웨어, 모듈을 자신의 소프트웨어 모듈로 사용하는 방법
+underscore - 설치전 디렉토리를 패키지로 지정해야함.
+npm init
+name, version, description: server side javascript tutorials 로 설정
+entry point : 나중에 변경가능
+test commend :
+git repository : github상의 주소 적어넣기
+... 설정
+package.json 파일이 생성됨
+package에 대한 정보를 생성, 이 프로젝트를 npm에 등록해서 다른 사람이 이용할 수 있게함.
+
+npm install underscore 하면 node_module안에 underscore가 생김.
+underscore --save 하면  dependencies가 추가됨. 새로운 폴더에 다시 시작한다고 하더라도,  쉽게 가져올 수 있음
+
+//HTML
+수정하면 바로 반영 가능하다는 특징!!
+
+//템플릿 엔진
+정적인것의 장점과 동적인 것의 장점을 이용한것
+
+//코드 자동 수정 - 저장기능
+supervisor ... . js
+
+//pug express code pretty
+app.locals.pretty = true;
+
+//쿼리 스트링
+두가지 값을 나타내고 싶을 때 id=1 & name = egoing
+req.query.id +','+req.query.name
+query 이용
+
+//시멘틱 url
+id= 2 가 아니라 2 로 접근 가능한 방법
+params 이용
+
+//Post방식
+GET -> 웹서버로 정보를 요청할 때  get을 항상 사용(빠름 - 캐싱)
+POST-> 데이터 전송을 기반으로 한 요청 메서드
+=>둘다 서버에 요청을 하는 매서드
+앱에 접속하면 사용자의 요청에 의해 응답하고, 그 정보를 가져옴(GET)
+경우에 따라 주소의 경로에 query string을 줘서 정보를 가져오기도 함(GET)
+Body에다가 데이터를 넣어서 보내는 것(POST)
+
+method = get 이랑 post랑 달라서 post할 때는 query string이 붙지 않음.
+그럼 post방식으로 전송하는 방법은?
+post를 get하는 방식과 동일하게 사용하면 body를 인식하지 못하는 문제가 생김
+따리서 body-parser라는 모듈(미들웨어)을 사용해야함. use라는 메소드를 통해 연결을 하고
+body라고 하는 객체를 bodyparser가 추가하는 것. 출력할 수 있도록 도움
+
+//post get 방식의 차,용도
+<post>
+form 화면상, 만약 이게 get방식이라 할때 url이 id와 password가 나타남. 따라서
+정보가 표시되지 않는 방식인 post를 쓰는것이 당연함 보안사고 X
+본문의 내용이 엄청 많은 경우 모든 정보를 다 끊김없이 전달하기 위한 것.(용량제한X)
+<get>
+query string 이용할 때 get방식.
+
+->둘다 보안상 불완전한 상황
+
+//코드 중복 제거
+-> 소스 코드 유지보수 쉬워짐
+라우트마다 흩어져있으면 같은 취지의 코드인지 확인하기 힘듬.
+중복을 제거해주면 같은 건지 확인 필요 없음. 가독성 높아짐. 코드의 양 줄어듬
